@@ -1,0 +1,60 @@
+{
+    "DeviceSchema": {
+        "type": "object",
+        "properties": {
+            "id" : {
+                "type" : "integer"
+            },
+            "DeviceName": 
+            {
+                "type": ["string", "null"],
+                "default": null
+            },
+            "Description": {
+                "type": ["string", "null"],
+                "default": null
+            },
+            "SerialNumber": {
+                "type": "string"
+            },
+            "Manufacturer": {
+                "type": ["string", "null"],
+                "default": null
+            },
+            "QR_URL": {
+                "type": ["string", "null"],
+                "default": null
+            }
+        },
+        "required": ["SerialNumber"],
+        "additionalProperties": false
+    },
+
+    "UpdateSchema": {
+    "type": "object",
+    "properties": {
+        "DeviceName": {
+            "type": ["string", "null"],
+            "default": null
+        },
+        "Description": {
+            "type": ["string", "null"],
+            "default": null
+        },
+        "SerialNumber": {
+            "type": "string"
+        },
+        "Manufacturer": {
+            "type": ["string", "null"],
+            "default": null
+        },
+        "QR_URL": {
+            "type": ["string", "null"],
+            "default": null
+        }
+    },
+    "required": ["SerialNumber"],
+    "additionalProperties": false
+    }
+}
+    

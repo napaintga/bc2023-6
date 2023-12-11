@@ -1,0 +1,297 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+      "title" : "LAB6",
+      "Descriptionription" : "....)",
+      "version" : "1.0.0"
+  },
+  "servers" : [
+      {
+          "url" : "http://localhost:8000"
+      }
+  ],
+  "paths" : {
+      "/devices" : {
+          "get" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Отримати всі дивайси",
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK",
+                      "content" : {
+                          "application/json" : {
+                              "schema" : {
+                                  "$ref" : "#/components/schemas/Devices"
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "post" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Додати",
+              "requestBody" : {
+                  "content" : {
+                      "application/json" : {
+                          "schema" : {
+                              "$ref" : "#/components/schemas/addDevice"
+                          }
+                      }
+                  }
+              },
+              "responses" : {
+                  "201" : {
+                      "Descriptionription" : "Created"
+                  },
+                  "400" : {
+                      "Descriptionription" : "Bad JSON data"
+                  }
+              }
+          }
+      },
+      "/devices/{id}" : {
+          "get" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "за id ",
+              "Descriptionription" : "Get device by id from database",
+              "parameters" : [
+                  {
+                      "name" : "id",
+                      "in" : "path",
+                      "Descriptionription" : "Device id",
+                      "required" : true,
+                      "schema" : {
+                          "type" : "integer",
+                          "format" : "int64",
+                          "example" : 1
+                      }
+                  }
+              ],
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK",
+                      "content" : {
+                          "application/json" : {
+                              "schema" : {
+                                  "$ref" : "#/components/schemas/Device"
+                              }
+                          }
+                      }
+                  },
+                  "404" : {
+                      "Descriptionription" : "Not found"
+                  }
+              }
+          },
+          "put" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Update device by id",
+              "Descriptionription" : "Update device by id in database",
+              "parameters" : [
+                  {
+                      "name" : "id",
+                      "in" : "path",
+                      "Descriptionription" : "Device id",
+                      "required" : true,
+                      "schema" : {
+                          "type" : "integer"
+                      }
+                  }
+              ],
+              "requestBody" : {
+                  "content" : {
+                      "application/json" : {
+                          "schema" : {
+                              "$ref" : "#/components/schemas/addDevice"
+                          }
+                      }
+                  }
+              },
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK",
+                      "content" : {
+                          "application/json" : {
+                              "schema" : {
+                                  "$ref" : "#/components/schemas/Device"
+                              }
+                          }
+                      }
+                  },
+                  "404" : {
+                      "Descriptionription" : "Not found"
+                  },
+                  "400" : {
+                      "Descriptionription" : "Bad JSON data"
+                  }
+              }
+          },
+          "delete" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Delete device by id",
+              "Descriptionription" : "Delete device by id from database",
+              "parameters" : [
+                  {
+                      "name" : "id",
+                      "in" : "path",
+                      "Descriptionription" : "Device id",
+                      "required" : true,
+                      "schema" : {
+                          "type" : "integer"
+                      }
+                  }
+              ],
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK"
+                  },
+                  "404" : {
+                      "Descriptionription" : "Not found"
+                  }
+              }
+          }
+      },
+      "/devices/{id}/image" : {
+          "put" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Upload device image",
+              "Descriptionription" : "Upload device image by id",
+              "parameters" : [
+                  {
+                      "name" : "id",
+                      "in" : "path",
+                      "Descriptionription" : "Device id",
+                      "required" : true,
+                      "schema" : {
+                          "type" : "integer"
+                      }
+                  }
+              ],
+              "requestBody" : {
+                  "content" : {
+                      "multipart/form-data" : {
+                          "schema" : {
+                              "type" : "object",
+                              "properties" : {
+                                  "image" : {
+                                      "type" : "string",
+                                      "format" : "binary"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK"
+                  },
+                  "404" : {
+                      "Descriptionription" : "Not found"
+                  },
+                  "400" : {
+                      "Descriptionription" : "Bad Image"
+                  }
+              }
+          },
+          "get" : {
+              "tags" : [
+                  "Devices"
+              ],
+              "summary" : "Get device image",
+              "Descriptionription" : "Get device image by id",
+              "parameters" : [
+                  {
+                      "name" : "id",
+                      "in" : "path",
+                      "Descriptionription" : "Device id",
+                      "required" : true,
+                      "schema" : {
+                          "type" : "integer"
+                      }
+                  }
+              ],
+              "responses" : {
+                  "200" : {
+                      "Descriptionription" : "OK",
+                      "content" : {
+                          "image/png" : {
+                              "schema" : {
+                                  "type" : "string",
+                                  "format" : "binary"
+                              }
+                          }
+                      }
+                  },
+                  "404" : {
+                      "Descriptionription" : "Not found"
+                  }
+              }
+          }
+      }
+  },
+  "components" : {
+      "schemas" : {
+          "Device" : {
+              "type" : "object",
+              "properties" : {
+                  "id" : {
+                      "type" : "integer"
+                  },
+                  "DeviceDeviceName" : {
+                      "type" : "string"
+                  },
+                  "Description" : {
+                      "type" : "string"
+                  },
+                  "SerialNumber" : {
+                      "type" : "string"
+                  },
+                  "Manufacturer" : {
+                      "type" : "string"
+              
+                  },
+                  "QR_URL" : {
+                      "type" : "string"
+                  }
+              }
+          },
+          "addDevice" : {
+              "type" : "object",
+              "properties" : {
+                  "DeviceName" : {
+                      "type" : "string"
+                  },
+                  "Description" : {
+                      "type" : "string"
+                  },
+                  "SerialNumber" : {
+                      "type" : "string"
+                  },
+                  "Manufacturer" : {
+                      "type" : "string"
+                  }
+              }
+          },
+          "Devices" : {
+              "type" : "array",
+              "items" : {
+                  "$ref" : "#/components/schemas/Device"
+              }
+          }
+      }
+  }
+}
